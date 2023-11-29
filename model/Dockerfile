@@ -14,7 +14,7 @@ COPY requirements.txt .
 COPY ./app .
 
 # for flask web server
-EXPOSE 8081
+EXPOSE 8080
 
 # install required libraries
 RUN pip3 install -r requirements.txt

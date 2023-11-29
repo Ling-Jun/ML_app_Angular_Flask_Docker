@@ -6,19 +6,25 @@ import functools
 
 # declare constants
 HOST = '0.0.0.0'
-PORT = 8081
+PORT = 8080
 
 # initialize flask application
 app = Flask(__name__)
 CORS(app)
 
+
+# https://docs.python.org/3/library/functools.html, functools caches the results to make runs faster
 @functools.lru_cache()
 def load_model():
     model_path = "model_objects/model.pkl"
     with open(model_path, 'rb') as f:
         model = pickle.load(f)
     return model
+
+
 model = load_model()    
+
+
 @app.route('/api/predict', methods=['POST'])
 def predict():
     X = request.get_json()
@@ -28,6 +34,8 @@ def predict():
     pred = model.predict(X_test)
     res = {"prediction": int(pred[0])}
     return jsonify(res)
+
+
 if __name__ == '__main__':
   # run web server
   app.run(host=HOST, port=PORT)
