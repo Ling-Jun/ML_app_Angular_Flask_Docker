@@ -12,3 +12,29 @@ For tutorial check out this [post](https://medium.com/@mehdi.mka/building-and-de
 
 - check local Angular version: `npm list @angular/cli --depth 0`
 - `npm install` then `ng serve` or `npm run start` if there is a `scripts` section in `package.json`
+
+## Random
+
+- set new Git origin
+
+    ```       
+    C:\Users\lizhou\Documents\ASSORTED_web_development_frontend\angular\ML-Application-with-Flask-Angular-Docker (main -> origin)
+    λ git remote -v
+    origin  https://github.com/sepideh68/ML-Application-with-Flask-Angular-Docker.git (fetch)
+    origin  https://github.com/sepideh68/ML-Application-with-Flask-Angular-Docker.git (push)
+
+    C:\Users\lizhou\Documents\ASSORTED_web_development_frontend\angular\ML-Application-with-Flask-Angular-Docker (main -> origin)
+    λ git remote add origin https://github.com/Ling-Jun/ML_app_Angular_Flask_Docker.git
+    error: remote origin already exists.
+
+    C:\Users\lizhou\Documents\ASSORTED_web_development_frontend\angular\ML-Application-with-Flask-Angular-Docker (main -> origin)
+    λ git remote set-url origin https://github.com/Ling-Jun/ML_app_Angular_Flask_Docker.git
+
+    C:\Users\lizhou\Documents\ASSORTED_web_development_frontend\angular\ML-Application-with-Flask-Angular-Docker (main -> origin)
+    λ git remote -v
+    origin  https://github.com/Ling-Jun/ML_app_Angular_Flask_Docker.git (fetch)
+    origin  https://github.com/Ling-Jun/ML_app_Angular_Flask_Docker.git (push)
+
+    C:\Users\lizhou\Documents\ASSORTED_web_development_frontend\angular\ML-Application-with-Flask-Angular-Docker (main -> origin)
+    λ
+    ```
