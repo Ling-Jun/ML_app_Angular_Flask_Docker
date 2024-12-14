@@ -1,0 +1,19 @@
+<h1>{{height_pred_data.title}}</h1>
+<br>
+<br>
+<br>
+
+<label>Weight (pound):</label>
+<input type="number" [(ngModel)]="height_pred_data.weight">
+<button (click)="submitToPred()" [disabled]="buttonDisabled">{{clickPredictButton()}}</button>
+
+<!-- <a style="background-color: yellowgreen;" [hidden]="!buttonDisabled"> Waiting for prediction to be calculated!</a> -->
+
+<div>
+    <label (click)="onClickSomeTextEvent($event)">Predicted Height in inches: </label>
+    <label (click)="onClickSomeTextEvent($event)">{{height_pred_data.predicted_height}}</label>
+</div>
+
+<div class="div">
+    Refer to  <a [href]="height_pred_data.referenceURL">HERE</a>  for the science behind it.
+</div>

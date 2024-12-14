@@ -13,8 +13,10 @@ RUN npm install
 # Copy the rest of the application code to the container
 COPY . .
 
+# Remember to remove node_modules dir from the app root, the files may confuse podman because it copies everything from root dir
 # Build the application
 RUN npm run build --prod
+# RUN ng build
 
 # Use a smaller base image for the production environment
 FROM nginx:1.21.0-alpine

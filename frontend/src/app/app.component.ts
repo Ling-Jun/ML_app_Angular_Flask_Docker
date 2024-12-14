@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RawDataService } from './raw-data.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -7,27 +9,32 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
-  title = 'Height prediction';
-  weight = 0;
-  predicted_height = ""
-  backendHost = 'localhost';
-  backend_url = "/api";
-  constructor(private http: HttpClient) { };
+
+  height_pred_data = this.rawData.heightPredDataScheme;
+  rawHeightWeightData = this.rawData.rawHeightWeightCorrData;  
+
+
+  constructor(private http: HttpClient, 
+    public rawData: RawDataService,
+    private titleService: Title
+    ) {
+    titleService.setTitle("Height Prediction from Weight")
+  };
+
+
   ngOnInit() {
     this.http.get('/assets/config.json').subscribe((config: any) => {
-      this.backendHost = config.backendHost;
+      this.height_pred_data.backendHost = config.backendHost;
     });
   }
-  submit() {
-    const predict_url = this.backendHost + this.backend_url + "/predict"
-    this.http.post(predict_url, this.weight).subscribe(
-      (response: any) => {
-        console.log(response);
-        this.predicted_height = response.prediction;
-      },
-      (error: any) => {
-        console.log('Error sending data:', error);
-      }
-    );
+
+
+  clearPointsList(){
+    this.rawHeightWeightData = this.rawData.clearData();
   }
+
+  returnPointsList(){
+    this.rawHeightWeightData = this.rawData.returnData();
+  }
+
 }

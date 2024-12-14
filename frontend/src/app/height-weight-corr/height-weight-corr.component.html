@@ -1,0 +1,44 @@
+<style>
+    #loop {
+    flex: 100px;
+    /* Grow to rest of container */
+    background: lightgreen;
+    /* Just so it's visible */
+    }
+</style>
+
+
+<h1>Scatter Plot of Height & Weight Correlation</h1>
+<figure id="scatter"
+    [style.border]="chartBorder"></figure>
+
+<div>
+    {{heightWeightData | json}}
+</div>
+
+<div *ngFor="let point of heightWeightData | slice:0:3; index as i">
+    <i *ngIf="i===resultArr[i]" class="material-icons">checkmark</i>
+    <span 
+        id="loop"
+        (click)="onClickPointsText(i)">
+        {{i+1 + ". Height "+ $any(point).Height+", Weight: "+ $any(point).Weight}} {{", Salary: "| uppercase}} 
+        {{ $any(point).Salary | currency:'CAD':'symbol':'2.2-2'}}   
+    </span>
+</div>
+
+
+<div>
+    <button class="left-side"
+    (click)="onReturnDataClick()"
+    >Return Points</button>
+
+    <button 
+    [class]="clearButtonTextColor()"
+    (click)="onClearClick()"
+    [disabled]="clearButtonDisabled"
+    >{{clearButtonText()}}</button>
+
+</div>
+
+
+
